@@ -2,8 +2,9 @@ import ctypes
 import numpy as np
 from numpy.ctypeslib import ndpointer
 import cv2
-
-lib = ctypes.CDLL('cpp_bindings/build/libfast_boxes.so')
+import os
+cwd = os.path.dirname(os.path.realpath(__file__))
+lib = ctypes.CDLL(os.path.join(cwd,'./build/libfast_boxes.so'))
 
 c_find_char_boxes = lib.findMinMaxBoxes
 c_find_char_boxes.argtypes = [
